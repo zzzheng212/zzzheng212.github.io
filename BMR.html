@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function calculateBMR() {
+      var weight = document.getElementById("weight").value;
+      var height = document.getElementById("height").value;
+      var age = document.getElementById("age").value;
+      var gender = document.querySelector('input[name="gender"]:checked').value;
+
+      var bmr;
+      if (gender === "male") {
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+      } else {
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+      }
+
+      document.getElementById("result").textContent = "您的基礎代謝率（BMR）為：" + bmr + " 卡路里/天";
+    }
+  </script>
+</head>
+<body>
+  <h1>測量基礎代謝率（BMR）</h1>
+  <form>
+    <div>
+      <label for="weight">體重（公斤）：</label>
+      <input type="number" id="weight" required>
+    </div>
+    <div>
+      <label for="height">身高（公分）：</label>
+      <input type="number" id="height" required>
+    </div>
+    <div>
+      <label for="age">年齡：</label>
+      <input type="number" id="age" required>
+    </div>
+    <div>
+      <label for="male">男性</label>
+      <input type="radio" id="male" name="gender" value="male" checked>
+      <label for="female">女性</label>
+      <input type="radio" id="female" name="gender" value="female">
+    </div>
+    <button type="button" onclick="calculateBMR()">計算</button>
+  </form>
+  <p id="result"></p>
+</body>
+</html>
